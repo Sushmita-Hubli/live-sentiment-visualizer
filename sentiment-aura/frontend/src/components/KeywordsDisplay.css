@@ -1,0 +1,45 @@
+.keywords-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.keywords-container h3 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.keyword-tag {
+  display: inline-block;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.8), rgba(219, 39, 119, 0.8));
+  border-radius: 20px;
+  font-size: 14px;
+  animation: fadeInUp 0.5s ease-out;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

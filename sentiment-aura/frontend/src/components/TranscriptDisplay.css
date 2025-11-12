@@ -1,0 +1,41 @@
+.transcript-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 400px;
+  max-height: 300px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.transcript-container h3 {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.transcript-content {
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.transcript-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.transcript-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.transcript-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}

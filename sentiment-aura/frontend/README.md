@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# Sentiment Aura
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Real-time AI-powered sentiment analysis with live audio transcription and generative Perlin noise visualization.
 
-## Available Scripts
+## Demo Video
 
-In the project directory, you can run:
+**[Watch Demo Video](https://drive.google.com/file/d/1oun988wck9FSD_ra3gIOhD8X3HfTjFUO/view?usp=drive_link)**
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Real-time audio transcription using Deepgram WebSocket API
+- AI sentiment analysis using Groq (Llama 3.1 8B)
+- Dynamic Perlin noise visualization that responds to emotions
+- Smooth keyword animations
+- End-to-end latency under 2 seconds
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+**Frontend:** React, p5.js, Deepgram SDK, Axios
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Backend:** FastAPI, Groq API, HTTPX, Uvicorn
 
-### `npm run build`
+## How It Works
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. User speaks into microphone
+2. Audio streams to Deepgram for real-time transcription
+3. Transcript sent to FastAPI backend
+4. Backend analyzes sentiment using Groq's Llama 3.1 model
+5. Frontend receives sentiment data and updates visualization
+6. Visualization responds with colors and movement based on emotion
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Sentiment Visualization
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Positive emotions** (happy, excited): Warm colors (yellow/orange), fast movement
+- **Negative emotions** (sad, angry): Cool colors (blue), slow movement
+- **Neutral emotions**: Purple/magenta colors, moderate movement
 
-### `npm run eject`
+## Setup Instructions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Node.js (v18+)
+- Python (v3.8+)
+- Deepgram API key (free $200 credits at console.deepgram.com)
+- Groq API key (free at console.groq.com)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Backend Setup
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # Mac/Linux
+pip install fastapi uvicorn python-dotenv openai httpx
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Create `.env` file in backend folder:
+```
+GROQ_API_KEY=your_groq_api_key_here
+```
 
-## Learn More
+Run backend:
+```bash
+python main.py
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Backend runs on http://localhost:8000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Frontend Setup
 
-### Code Splitting
+Open new terminal window:
+```bash
+cd frontend
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Create `.env` file in frontend folder:
+```
+REACT_APP_DEEPGRAM_API_KEY=your_deepgram_api_key_here
+```
 
-### Analyzing the Bundle Size
+Run frontend:
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Frontend runs on http://localhost:3000
 
-### Making a Progressive Web App
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Open http://localhost:3000
+2. Click "Start Recording"
+3. Allow microphone access
+4. Speak into microphone
+5. Watch live transcript, keywords, and visualization respond to your emotions
 
-### Advanced Configuration
+## Project Structure
+```
+sentiment-aura/
+├── backend/
+│   ├── main.py
+│   ├── .env.example
+│   └── venv/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── AuraVisualization.js
+│   │   │   ├── TranscriptDisplay.js
+│   │   │   ├── KeywordsDisplay.js
+│   │   │   └── Controls.js
+│   │   ├── App.js
+│   │   └── App.css
+│   ├── .env.example
+│   └── package.json
+├── .gitignore
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Author
 
-### Deployment
+Sushmita Hubli
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Built for Memory Machines Co-Op Application
